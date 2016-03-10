@@ -1,0 +1,17 @@
+body{ margin: 30px; }
+h1{ font-size: 140%; margin: 30px 0 0 0; padding: 0 10px; }
+time{ font-size: 80%; color: #666; padding: 0 10px; }
+article, .code, footer{ margin: 10px 0; padding: 10px; background-color: #FAFAFA; border: solid 1px #CCC; border-radius: 5px; }
+article{ font-family: monospace; color: #777; margin-top: 20px; }
+footer { color: #666; cursor:pointer; }
+footer span{ display: inline; }
+footer span.solution{ display: none; color: #080; }
+footer.show span{ display: none; }
+footer.show span.solution{ display: inline; }
+
+nav .item{ display: inline-block; }
+nav .item a{ display: table-cell; padding: 10px; background-color: #FAFAFA; border: solid 1px #CCC; border-radius: 5px; color: #000; text-decoration: none; min-width: 20px; text-align: center; }
+nav .item a:hover{ background-color: #FFF; color: #000; }
+nav .item:first-child{ margin-left: 0; }
+nav .item:last-child{ margin-right: 0; }
+nav .item a.selected{ background-color: #DDF; }
