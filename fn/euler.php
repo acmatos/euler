@@ -10,7 +10,7 @@ class Euler extends Math {
     public function problem_1()
     {
         for($i = 1; $i < 1000; $i++) {
-            if(!($i % 3) || !($i % 5)) {
+            if($this->isEvenlyDivisible($dividend = $i, $divisor = 3) || $this->isEvenlyDivisible($dividend = $i, $divisor = 5)) {
                 isset($solution) ? $solution += $i : $solution = $i;
             }
         }
@@ -30,7 +30,7 @@ class Euler extends Math {
         $current = 2;
 
         while(true) {
-            if(!($current % 2)) {
+            if($this->isEvenlyDivisible($dividend = $current, $divisor = 2)) {
                 isset($solution) ? $solution += $current : $solution = $current;
             }
 
@@ -53,6 +53,7 @@ class Euler extends Math {
     public function problem_3()
     {
         $nr = 600851475143;
+        # Sieve of Eratosthenes
         $primeSieve = array_flip(array(2=>-1) + $this->sieve(10000));
         foreach($primeSieve as $ps) {
             if(bcmod($nr,$ps) == 0) {
@@ -89,21 +90,23 @@ class Euler extends Math {
      * 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
      * What is the smallest number that is evenly divisible by all of the numbers from 1 to 20?
      */
-    // public function problem_5()
-    // {
-    //     $solution = $inc = 2520;
-    //     function checkDiv($i){
-    //         for($k=11;$k<=20;$k++) {
-    //             if(strpos( ($i / $k), '.') !== false) {
-    //                 return false;
-    //             }
-    //         }
-    //         return true;
-    //     }
-    //     while(!checkDiv($solution)) {
-    //         $solution = $solution + $inc;
-    //     }
-    // }
+    public function problem_5(&$solution = 2520)
+    {
+        $allEvenlyDivisible = true;
+        for($k=11;$k<=20;$k++) {
+            if(!$this->isEvenlyDivisible($solution,$k)) {
+                $allEvenlyDivisible = false;
+                break;
+            }
+        }
+
+        if($allEvenlyDivisible) {
+            return $solution;
+        }
+
+        $solution += 2520;
+        return $this->problem_5($solution);
+    }
 
 
     /**

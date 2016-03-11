@@ -8,7 +8,8 @@ class Math extends Help{
 	 * @param  int $n
 	 * @return array    Array of primes
 	 */
-	protected function sieve($n){
+	protected function sieve($n)
+	{
 	    $sieve = range(3,$n,2);
 	    $sieve = array_flip($sieve);
 	    foreach($sieve as $s => $v) {
@@ -34,12 +35,24 @@ class Math extends Help{
 	 * @param  int  $n
 	 * @return boolean
 	 */
-	protected function isPrime($n) {
+	protected function isPrime($n)
+	{
 	    for($i = 2; $i < $n; $i++) {
 	        if(!($n % $i)) {
 	            return false;
 	        }
 	    }
 	    return true;
+	}
+
+	/**
+	 * Assert division ends with no remainders
+	 * @param  number  $dividend
+	 * @param  number  $divisor
+	 * @return boolean           true if evenly divisible
+	 */
+	protected function isEvenlyDivisible($dividend, $divisor)
+	{
+		return !($dividend % $divisor);
 	}
 }
